@@ -13,7 +13,7 @@ void open_fun(char *f_name)
 	if (f_name == NULL || fd == NULL)
 		error(2, f_name);
 
-	read_f(fd);
+	read_fun(fd);
 	fclose(fd);
 }
 
@@ -32,7 +32,7 @@ void read_fun(FILE *fd)
 
 	for (linenbr = 1; getline(&buffer, &n, fd) != -1; linenbr++)
 	{
-		i = parsef(buffer, linenbr, i);
+		i = parsefun(buffer, linenbr, i);
 	}
 	free(buffer);
 }
@@ -66,7 +66,7 @@ int parsefun(char *buffer, int linenbr, int i)
 	if (strcmp(ops, "queue") == 0)
 		return (1);
 
-	find_func(ops, val, linenbr, i);
+	find_fun(ops, val, linenbr, i);
 	return (i);
 }
 
@@ -110,7 +110,7 @@ void find_fun(char *ops, char *val, int ln, int i)
 	{
 		if (strcmp(ops, func_list[n].opcode) == 0)
 		{
-			callf(func_list[n].f, ops, val, ln, i);
+			callfun(func_list[n].f, ops, val, ln, i);
 			flag = 0;
 		}
 	}
@@ -149,7 +149,7 @@ void callfun(op_func func, char *ops, char *val, int ln, int f)
 			if (isdigit(val[i]) == 0)
 				error(5, ln);
 		}
-		node = nds(atoi(val) * flag);
+		node = nods(atoi(val) * flag);
 		if (f == 0)
 			func(&node, ln);
 		if (f == 1)

@@ -22,7 +22,7 @@ void swapnods(stack_t **stack, unsigned int linenbr)
 	stack_t *tmp;
 
 	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
-		more_errs(8, linenbr, "swap");
+		more_errors(8, linenbr, "swap");
 	tmp = (*stack)->next;
 	(*stack)->next = tmp->next;
 	if (tmp->next != NULL)
@@ -43,7 +43,7 @@ void addnods(stack_t **stack, unsigned int linenbr)
 	int s;
 
 	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
-		more_errs(8, linenbr, "add");
+		more_errors(8, linenbr, "add");
 
 	(*stack) = (*stack)->next;
 	s = (*stack)->n + (*stack)->prev->n;
@@ -63,7 +63,7 @@ void subnods(stack_t **stack, unsigned int linenbr)
 
 	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
 
-		more_errs(8, linenbr, "sub");
+		more_errors(8, linenbr, "sub");
 
 
 	(*stack) = (*stack)->next;
@@ -83,10 +83,10 @@ void divnods(stack_t **stack, unsigned int linenbr)
 	int s;
 
 	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
-		more_errs(8, linenbr, "div");
+		more_errors(8, linenbr, "div");
 
 	if ((*stack)->n == 0)
-		more_errs(9, linenbr);
+		more_errors(9, linenbr);
 	(*stack) = (*stack)->next;
 	s = (*stack)->n / (*stack)->prev->n;
 	(*stack)->n = s;

@@ -10,7 +10,7 @@ void mulnods(stack_t **stack, unsigned int linenbr)
 	int s;
 
 	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
-		more_errs(8, linenbr, "mul");
+		more_errors(8, linenbr, "mul");
 
 	(*stack) = (*stack)->next;
 	s = (*stack)->n * (*stack)->prev->n;
@@ -30,11 +30,11 @@ void modnods(stack_t **stack, unsigned int linenbr)
 
 	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
 
-		more_errs(8, linenbr, "mod");
+		more_errors(8, linenbr, "mod");
 
 
 	if ((*stack)->n == 0)
-		more_errs(9, linenbr);
+		more_errors(9, linenbr);
 	(*stack) = (*stack)->next;
 	s = (*stack)->n % (*stack)->prev->n;
 	(*stack)->n = s;
